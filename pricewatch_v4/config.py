@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     supabase_service_key: str
 
     # JWT
-    jwt_secret: str = "change-me-in-production"
+    jwt_secret: str
     jwt_algorithm: str = "HS256"
     jwt_expiry_hours: int = 24
 
@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     groq_api_key: str
 
     # App — used for email redirect URLs
-    app_url: str = "https://effective-trout-qr746q4r97536wjg-8000.app.github.dev"
+    app_url: str = "https://pricewatch-br8y.onrender.com"
 
     # App env
     app_env: str = "development"

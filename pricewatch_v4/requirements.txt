@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+gunicorn
+supabase
+pydantic-settings
+pydantic[email]
+python-dotenv
+passlib[bcrypt]
+python-jose[cryptography]
+httpx
+groq
+requests
+pytest
+pytest-asyncio
+passlib[bcrypt]

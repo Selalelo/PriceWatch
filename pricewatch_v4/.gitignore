@@ -1,0 +1,36 @@
+# Env
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual envs
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+tests/
+
+# Build
+dist/
+build/
+*.egg-info/
+
+docker-compose.yml
+Dockerfile
+
+supabase_migration.sql

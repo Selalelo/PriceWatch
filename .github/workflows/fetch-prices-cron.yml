@@ -1,0 +1,36 @@
+name: Fetch Prices
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every 15 minutes (matches --loop interval)
+  workflow_dispatch:          # allow manual trigger from GitHub UI
+
+jobs:
+  fetch:
+    name: Fetch & Store Prices
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip               # cache dependencies between runs
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv supabase
+
+      - name: Run fetch_prices.py
+        env:
+          SUPABASE_URL:         ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: python pricewatch_v4/fetch_prices.py
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::fetch_prices.py failed — check Supabase connectivity and API sources"

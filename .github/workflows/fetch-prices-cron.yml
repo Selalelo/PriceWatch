@@ -2,8 +2,10 @@ name: Fetch Prices
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # every 15 minutes (matches --loop interval)
-  workflow_dispatch:          # allow manual trigger from GitHub UI
+    - cron: "0,15,30,45 * * * *"   # every 15 min — explicit times, more reliable than */15
+  workflow_dispatch:                # manual trigger from GitHub UI
+  push:
+    branches: [main]               # run on push to keep workflow "active" (prevents GitHub disabling it)
 
 jobs:
   fetch:
@@ -19,7 +21,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip               # cache dependencies between runs
+          cache: pip
 
       - name: Install dependencies
         run: pip install requests python-dotenv supabase

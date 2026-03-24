@@ -370,5 +370,4 @@ This finds the most recent FX rate at or before each price timestamp — ensurin
 
 ---
 
-*Built for the SARB Grow-IT 2027 Internship application*
 *BSc Mathematical Science — Python · FastAPI · Supabase · GitHub Actions · MCP · AI · Data Engineering*
